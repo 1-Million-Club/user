@@ -3,12 +3,15 @@ import { OAuthButtons } from '@/components/login/oauthbuttons';
 
 export default function Login() {
   return (
-    <section className="flex items-center gap-25 h-screen w-screen p-2">
-      <img
-        src="/login-image.webp"
-        alt="login image"
-        className="hidden md:block h-full w-134.5"
-      />
+    <section className="flex items-center gap-20 h-screen w-screen p-2">
+      <div className="md:w-114.5 hidden md:block h-full overflow-hidden">
+        <img
+          src="/login-image.webp"
+          alt="login image"
+          className="w-full h-full"
+        />
+      </div>
+
       <div className="w-full md:w-1/2">
         <section className="md:w-87.5">
           <section className="flex flex-col items-center justify-center gap-4 px-8">

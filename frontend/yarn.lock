@@ -2768,14 +2768,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:1.0.8, @types/estree@npm:^1.0.6":
+"@types/eslint-plugin-tailwindcss@npm:^3":
+  version: 3.17.0
+  resolution: "@types/eslint-plugin-tailwindcss@npm:3.17.0"
+  dependencies:
+    "@types/eslint": "npm:*"
+  checksum: 10c0/256c720bab11019fe99fc1a60e8d57221e1d4312f43ae05f9526de61be51050d584f3735ba10765e0cfc70ed318acf25743130f5b4f426412550dd68bc095f37
+  languageName: node
+  linkType: hard
+
+"@types/eslint@npm:*":
+  version: 9.6.1
+  resolution: "@types/eslint@npm:9.6.1"
+  dependencies:
+    "@types/estree": "npm:*"
+    "@types/json-schema": "npm:*"
+  checksum: 10c0/69ba24fee600d1e4c5abe0df086c1a4d798abf13792d8cfab912d76817fe1a894359a1518557d21237fbaf6eda93c5ab9309143dee4c59ef54336d1b3570420e
+  languageName: node
+  linkType: hard
+
+"@types/estree@npm:*, @types/estree@npm:1.0.8, @types/estree@npm:^1.0.6":
   version: 1.0.8
   resolution: "@types/estree@npm:1.0.8"
   checksum: 10c0/39d34d1afaa338ab9763f37ad6066e3f349444f9052b9676a7cc0252ef9485a41c6d81c9c4e0d26e9077993354edf25efc853f3224dd4b447175ef62bdcc86a5
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:^7.0.15":
+"@types/json-schema@npm:*, @types/json-schema@npm:^7.0.15":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: 10c0/a996a745e6c5d60292f36731dd41341339d4eeed8180bb09226e5c8d23759067692b1d88e5d91d72ee83dfc00d3aca8e7bd43ea120516c17922cbcb7c3e252db
@@ -3841,6 +3860,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tailwindcss@npm:^3.18.2":
+  version: 3.18.2
+  resolution: "eslint-plugin-tailwindcss@npm:3.18.2"
+  dependencies:
+    fast-glob: "npm:^3.2.5"
+    postcss: "npm:^8.4.4"
+  peerDependencies:
+    tailwindcss: ^3.4.0
+  checksum: 10c0/2903923f81d5dd1813279cc419421612d7d3f58ba57aa48a931beaa18e2529fdea223e0c60135c3fd2aa55e3d798b4299a0280602c8c508480bebd4f6019ac9c
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^8.4.0":
   version: 8.4.0
   resolution: "eslint-scope@npm:8.4.0"
@@ -4095,7 +4126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.3.3":
+"fast-glob@npm:^3.2.5, fast-glob@npm:^3.3.3":
   version: 3.3.3
   resolution: "fast-glob@npm:3.3.3"
   dependencies:
@@ -4258,6 +4289,7 @@ __metadata:
     "@eslint/js": "npm:^9.39.1"
     "@hookform/resolvers": "npm:^5.2.2"
     "@tailwindcss/vite": "npm:^4.2.1"
+    "@types/eslint-plugin-tailwindcss": "npm:^3"
     "@types/node": "npm:^25.3.0"
     "@types/react": "npm:^19.2.7"
     "@types/react-dom": "npm:^19.2.3"
@@ -4267,6 +4299,7 @@ __metadata:
     eslint: "npm:^9.39.1"
     eslint-plugin-react-hooks: "npm:^7.0.1"
     eslint-plugin-react-refresh: "npm:^0.4.24"
+    eslint-plugin-tailwindcss: "npm:^3.18.2"
     globals: "npm:^16.5.0"
     lucide-react: "npm:^0.575.0"
     radix-ui: "npm:^1.4.3"
@@ -5770,7 +5803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.6":
+"postcss@npm:^8.4.4, postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:

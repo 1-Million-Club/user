@@ -1,6 +1,11 @@
+import JoinCohort from '@/components/onboarding/join-cohort';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { Link } from 'react-router';
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <style>{`
@@ -26,12 +31,17 @@ export default function Home() {
         .float-icon-4 { animation: float4 3s ease-in-out infinite 1.2s; }
       `}</style>
 
+      <JoinCohort showModal={showModal} setShowModal={setShowModal} />
+
       <section className="px-4 md:px-6 pt-4 h-screen flex flex-col w-screen overflow-hidden">
         <header className="max-w-7xl flex items-center justify-between">
           <img src="/logo.webp" alt="logo" className="size-10" />
-          <Button className="bg-[#F7F7F7] py-3.5 hover:bg-[#F7F7F7] text-dark-black rounded-md">
+          <Link
+            to={'/login'}
+            className="bg-[#F7F7F7] py-2 px-4 flex items-center text-dark-black rounded-md"
+          >
             Sign in
-          </Button>
+          </Link>
         </header>
 
         <div className="relative flex items-center justify-center my-auto">
@@ -98,10 +108,13 @@ export default function Home() {
             </p>
 
             <div className="flex gap-4 justify-center">
-              <Button>Join a cohort</Button>
-              <Button className="bg-[#F7F7F7] py-3.5 hover:bg-[#F7F7F7] text-dark-black rounded-md">
+              <Button onClick={() => setShowModal(true)}>Join a cohort</Button>
+              <Link
+                to={'/login'}
+                className="bg-[#F7F7F7] px-4 flex items-center text-dark-black rounded-md"
+              >
                 Sign in
-              </Button>
+              </Link>
             </div>
           </article>
         </div>
