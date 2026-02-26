@@ -22,6 +22,7 @@ type BaseProps<T extends FieldValues> = {
   placeholder?: string;
   autoComplete?: string;
   className?: string;
+  hint?: string;
 };
 
 type InputFieldProps<T extends FieldValues> = BaseProps<T> & {
@@ -91,6 +92,10 @@ export function FormField<T extends FieldValues>(props: FormFieldProps<T>) {
               placeholder={placeholder}
               autoComplete={autoComplete}
             />
+          )}
+
+          {props.hint && !fieldState.invalid && (
+            <p className="text-xs text-quarternary">{props.hint}</p>
           )}
 
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
