@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
-import { Bell, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router';
+import NotificationsDropdown from '../dropdowns/notification';
 import SettingsDropdown from '../dropdowns/settings';
 import { Button } from './button';
 
@@ -49,7 +50,7 @@ export default function NavBar() {
               Ask InvestAI
             </Button>
           )}
-          {!isQuizPage && <Bell size={22} color="#737373" fill="#737373" />}
+          {!isQuizPage && <NotificationsDropdown />}
 
           <SettingsDropdown />
         </article>
