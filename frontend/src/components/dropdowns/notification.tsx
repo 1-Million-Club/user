@@ -179,12 +179,13 @@ function NotificationDetail({ notification, onBack }: NotificationDetailProps) {
 
 function EmptyState() {
   return (
-    <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <div className="size-12 rounded-full bg-[#F5F5F5] flex items-center justify-center mb-3">
-        <Bell size={20} className="text-[#A3A3A3]" />
-      </div>
-      <p className="text-sm font-semibold text-[#1A1A1A]">No notifications</p>
-      <p className="text-xs text-[#A3A3A3] mt-1">You're all caught up!</p>
+    <div className="flex flex-col items-center gap-4 justify-center py-12 px-4 text-center">
+      <img
+        src="/notif.png"
+        alt="notification empty state"
+        className="h-[71px] w-[113px]"
+      />
+      <p className="font-medium text-[#0A0A0A]">You have no notifications</p>
     </div>
   );
 }

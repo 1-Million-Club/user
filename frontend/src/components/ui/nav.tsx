@@ -1,9 +1,8 @@
 import { cn } from '@/lib/utils';
-import { Sparkles } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router';
+import InvestAIDropdown from '../dropdowns/ai';
 import NotificationsDropdown from '../dropdowns/notification';
 import SettingsDropdown from '../dropdowns/settings';
-import { Button } from './button';
 
 const navLinks = [
   { name: 'Dashboard', link: '/Dashboard' },
@@ -44,14 +43,8 @@ export default function NavBar() {
         </article>
 
         <article className="flex items-center justify-center gap-4">
-          {!isQuizPage && (
-            <Button className="bg-linear-to-r rounded-[48px] text-sm gap-2 from-[#EF24EB] to-[#9B53FF]">
-              <Sparkles fill="white" />
-              Ask InvestAI
-            </Button>
-          )}
+          {!isQuizPage && <InvestAIDropdown />}
           {!isQuizPage && <NotificationsDropdown />}
-
           <SettingsDropdown />
         </article>
       </article>

@@ -1,6 +1,7 @@
+import { Check } from 'lucide-react';
 import type { SetStateAction } from 'react';
+import { Link } from 'react-router';
 import { Dialog, DialogContent, DialogTitle } from '../ui/dialog';
-import JoinCohortForm from './form';
 
 export default function JoinCohort({
   showModal,
@@ -27,10 +28,10 @@ export default function JoinCohort({
             </div>
           </div>
           <div className="flex-1 overflow-y-auto min-h-0">
-            <JoinCohortForm />
+            {/* <JoinCohortForm /> */}
 
             {/* success */}
-            {/* <div className="flex flex-col justify-center h-full items-center gap-8">
+            <div className="flex flex-col justify-center h-full items-center gap-8">
               <div className="size-20 flex items-center justify-center rounded-full bg-[#10B981]">
                 <Check color="white" className="size-10" size={24} />
               </div>
@@ -51,7 +52,7 @@ export default function JoinCohort({
                   Contact us
                 </Link>
               </p>
-            </div> */}
+            </div>
           </div>
         </article>
       </DialogContent>
