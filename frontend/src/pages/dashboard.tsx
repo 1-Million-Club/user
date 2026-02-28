@@ -1,6 +1,7 @@
 import Accountability from '@/components/dashboard/accountability';
 import CheckInCard from '@/components/dashboard/check-in-card';
 import { ConsistencyScore } from '@/components/dashboard/consistency-score';
+import MembersTable from '@/components/dashboard/members-table';
 import { RecentCheckIns } from '@/components/dashboard/recent-check-ins';
 import { StatCard } from '@/components/dashboard/stat-card';
 import { Badge } from '@/components/ui/badge';
@@ -108,6 +109,8 @@ export default function DashboardHeader() {
 
         <Accountability hasData={hasData} />
       </article>
+
+      <MembersTable />
     </section>
   );
 }
