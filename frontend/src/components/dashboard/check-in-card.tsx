@@ -1,11 +1,15 @@
 import { FlameIcon } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '../ui/button';
+import CheckInModal from './check-in-modal';
 
 interface CheckInCardProps {
   hasData: boolean;
 }
 
 export default function CheckInCard({ hasData }: CheckInCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div
       className={`relative  flex-1 rounded-2xl overflow-hidden px-6 py-5 flex flex-col ${hasData ? 'items-start justify-start text-left' : 'items-center justify-center text-center'}`}
@@ -14,6 +18,7 @@ export default function CheckInCard({ hasData }: CheckInCardProps) {
           'repeating-linear-gradient(120deg, #3B82F6 0px, #3B82F6 40px, #297AFF 40px, #297AFF 120px)',
       }}
     >
+      <CheckInModal isOpen={isOpen} setIsOpen={setIsOpen} />
       {!hasData ? (
         <>
           <p className="relative text-white font-bold text-2xl mb-1">
@@ -22,7 +27,10 @@ export default function CheckInCard({ hasData }: CheckInCardProps) {
           <p className="relative text-white font-medium text-sm mb-4">
             Report your investment for March 2026.
           </p>
-          <Button className="relative bg-white text-[#1E40AF] hover:bg-white/90 font-medium text-sm rounded-md px-3 py-2.5">
+          <Button
+            onClick={() => setIsOpen(true)}
+            className="relative bg-white text-[#1E40AF] hover:bg-white/90 font-medium text-sm rounded-md px-3 py-2.5"
+          >
             Submit first check-In
           </Button>
         </>
@@ -38,7 +46,10 @@ export default function CheckInCard({ hasData }: CheckInCardProps) {
             <p className="text-sm font-medium">Due June 30</p>
           </div>
 
-          <Button className="relative bg-white text-[#1E40AF] hover:bg-white/90 font-medium text-sm rounded-md px-3 py-2.5">
+          <Button
+            onClick={() => setIsOpen(true)}
+            className="relative bg-white text-[#1E40AF] hover:bg-white/90 font-medium text-sm rounded-md px-3 py-2.5"
+          >
             Submit check-In
           </Button>
         </div>
