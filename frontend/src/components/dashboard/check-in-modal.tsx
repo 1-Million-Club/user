@@ -77,7 +77,7 @@ export default function CheckInModal({
     setIsOpen(false);
   }
 
-  const isSuccess = false;
+  const isSuccess = true;
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>

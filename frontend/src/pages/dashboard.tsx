@@ -35,7 +35,7 @@ const membershipDetails = [
 ];
 
 export default function DashboardHeader() {
-  const hasData = false;
+  const hasData = true;
 
   return (
     <section className="pb-10">

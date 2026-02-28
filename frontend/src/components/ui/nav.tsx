@@ -6,8 +6,8 @@ import SettingsDropdown from '../dropdowns/settings';
 
 const navLinks = [
   { name: 'Dashboard', link: '/Dashboard' },
-  { name: 'Check-ins', link: '/check-ins' },
-  { name: 'Resources', link: '/resources' },
+  { name: 'Check-ins', link: '/dashboard/check-ins' },
+  { name: 'Resources', link: '/dashboard/resources' },
 ];
 
 export default function NavBar() {
@@ -34,6 +34,7 @@ export default function NavBar() {
                       isActive && 'bg-[#297AFF33] text-[#0E47A4]',
                     )
                   }
+                  end
                 >
                   {item.name}
                 </NavLink>

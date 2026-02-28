@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router';
 
 interface CheckIn {
   date: string;
@@ -27,9 +28,12 @@ export function RecentCheckIns({ hasData }: RecentCheckInsProps) {
       <div className="flex items-center justify-between mb-4 px-3">
         <h3 className="font-semibold text-[#404040]">Recent check-ins</h3>
         {hasData && (
-          <button className="flex items-center border cursor-pointer border-[#F0F0F0] px-3 rounded-md py-2 gap-1 text-sm font-medium text-[#0A0A0A] hover:opacity-70 transition-opacity">
+          <Link
+            to={'/dashboard/check-ins'}
+            className="flex items-center border cursor-pointer border-[#F0F0F0] px-3 rounded-md py-2 gap-1 text-sm font-medium text-[#0A0A0A] hover:opacity-70 transition-opacity"
+          >
             View all <ChevronRight size={16} />
-          </button>
+          </Link>
         )}
       </div>
 
