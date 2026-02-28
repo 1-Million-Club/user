@@ -15,8 +15,8 @@ export default function NavBar() {
   const isQuizPage = pathname === '/dashboard/quiz';
 
   return (
-    <header className="fixed top-0 z-20 flex w-full items-center justify-between border-b border-[#E5E5E5] bg-white px-8 py-4">
-      <article className="flex items-center justify-between gap-4 w-7xl">
+    <header className="fixed top-0 z-20 flex w-full items-center justify-between border-b border-[#E5E5E5] bg-white py-4">
+      <article className="flex items-center mx-auto justify-between gap-4 w-4xl">
         <article className="flex items-center justify-between gap-4">
           <img src="/logo.webp" alt="one million club" className="size-8" />
           {!isQuizPage && (

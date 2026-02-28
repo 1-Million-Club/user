@@ -5,7 +5,7 @@ export default function DashboardLayout() {
   return (
     <section>
       <NavBar />
-      <div className="mt-24 max-w-7xl px-8">
+      <div className="mt-24 max-w-4xl mx-auto">
         <Outlet />
       </div>
     </section>
