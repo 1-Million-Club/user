@@ -5,7 +5,7 @@ import NotificationsDropdown from '../dropdowns/notification';
 import SettingsDropdown from '../dropdowns/settings';
 
 const navLinks = [
-  { name: 'Dashboard', link: '/Dashboard' },
+  { name: 'Dashboard', link: '/dashboard' },
   { name: 'Check-ins', link: '/dashboard/check-ins' },
   { name: 'Resources', link: '/dashboard/resources' },
 ];

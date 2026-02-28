@@ -4,6 +4,7 @@ import { FormField } from '@/components/ui/form-field';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import z from 'zod';
 
 const formSchema = z
@@ -33,6 +34,8 @@ interface AccountSetupFormProps {
 }
 
 function AccountSetupForm({ email }: AccountSetupFormProps) {
+  const navigate = useNavigate();
+
   const form = useForm<AccountSetupCred>({
     resolver: zodResolver(formSchema),
     mode: 'onChange',
@@ -44,6 +47,7 @@ function AccountSetupForm({ email }: AccountSetupFormProps) {
 
   function onSubmit(data: AccountSetupCred) {
     console.log(data);
+    navigate('/dashboard/quiz');
   }
 
   return (

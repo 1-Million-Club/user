@@ -1,7 +1,9 @@
 import { Check } from 'lucide-react';
 import type { SetStateAction } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { Dialog, DialogContent, DialogTitle } from '../ui/dialog';
+import JoinCohortForm from './form';
 
 export default function JoinCohort({
   showModal,
@@ -10,8 +12,15 @@ export default function JoinCohort({
   showModal: boolean;
   setShowModal: React.Dispatch<SetStateAction<boolean>>;
 }) {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleClose(open: boolean) {
+    setShowModal(open);
+    if (!open) setSubmitted(false); // reset when modal closes
+  }
+
   return (
-    <Dialog open={showModal} onOpenChange={setShowModal}>
+    <Dialog open={showModal} onOpenChange={handleClose}>
       <DialogContent className="md:max-w-249 p-0 h-[90%] overflow-hidden flex flex-col">
         <DialogTitle className="sr-only">Join Cohort Modal</DialogTitle>
         <article className="flex flex-1 min-h-0">
@@ -27,32 +36,35 @@ export default function JoinCohort({
               </p>
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto min-h-0">
-            {/* <JoinCohortForm /> */}
 
-            {/* success */}
-            <div className="flex flex-col justify-center h-full items-center gap-8">
-              <div className="size-20 flex items-center justify-center rounded-full bg-[#10B981]">
-                <Check color="white" className="size-10" size={24} />
-              </div>
-              <div className="max-w-95 text-center space-y-2">
-                <h3 className="text-[#0E021A] font-bold text-xl">
-                  You’re In 🎉
-                </h3>
-                <p className="text-[#404040] font-medium">
-                  We’ve sent an activation link to:{' '}
-                  <span className="text-dark-black">kwamecohort@mail.com</span>{' '}
-                  <br /> The email usually arrives within 1–2 minutes.
+          <div className="flex-1 overflow-y-auto min-h-0">
+            {submitted ? (
+              <div className="flex flex-col justify-center h-full items-center gap-8">
+                <div className="size-20 flex items-center justify-center rounded-full bg-[#10B981]">
+                  <Check color="white" className="size-10" size={24} />
+                </div>
+                <div className="max-w-95 text-center space-y-2">
+                  <h3 className="text-[#0E021A] font-bold text-xl">
+                    You're In 🎉
+                  </h3>
+                  <p className="text-[#404040] font-medium">
+                    We've sent an activation link to:{' '}
+                    <span className="text-dark-black">
+                      kwamecohort@mail.com
+                    </span>{' '}
+                    <br /> The email usually arrives within 1–2 minutes.
+                  </p>
+                </div>
+                <p className="text-center text-[#404040] font-medium">
+                  Didn't receive any email?{' '}
+                  <Link to={'#'} className="text-[#A855F7] font-semibold">
+                    Contact us
+                  </Link>
                 </p>
               </div>
-
-              <p className="text-center text-[#404040] font-medium">
-                Didn’t receive any email?{' '}
-                <Link to={'#'} className="text-[#A855F7] font-semibold">
-                  Contact us
-                </Link>
-              </p>
-            </div>
+            ) : (
+              <JoinCohortForm onSuccess={() => setSubmitted(true)} />
+            )}
           </div>
         </article>
       </DialogContent>

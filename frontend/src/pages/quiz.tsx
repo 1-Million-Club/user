@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -357,19 +358,17 @@ function Stepper({
   );
 }
 
-// ── Main Quiz Page ────────────────────────────────────────────────────────────
-
 export default function Quiz() {
   const [currentStep, setCurrentStep] = useState<Step>('investment-plan');
-
+  const navigate = useNavigate();
   const stepMeta = STEPS.find((s) => s.id === currentStep)!;
 
   const handleContinue = () => {
     if (currentStep === 'investment-plan') {
       setCurrentStep('knowledge-standards');
     } else {
-      // final submission
       console.log('Quiz complete');
+      navigate('/dashboard');
     }
   };
 

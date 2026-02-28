@@ -37,7 +37,11 @@ function MembershipCard() {
   );
 }
 
-export default function JoinCohortForm() {
+export default function JoinCohortForm({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
   const form = useForm<OnboardingCred>({
     resolver: zodResolver(formSchema),
     mode: 'onChange',
@@ -49,6 +53,7 @@ export default function JoinCohortForm() {
 
   function onSubmit(data: OnboardingCred) {
     console.log(data);
+    onSuccess();
   }
 
   return (
@@ -65,12 +70,6 @@ export default function JoinCohortForm() {
       <OAuthButtons />
 
       <p className="text-center text-tertiary font-medium">or</p>
-
-      {/* show this if oauth was used */}
-      {/* <div className="border border-[#F0F0F0] bg-[#FAFAFA] font-semibold text-sm text-[#404040] rounded-xl p-3 flex flex-col gap-1.25">
-        <p>Kwame John</p>
-        <p>Kwame.john@email.com</p>
-      </div> */}
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
         <FieldGroup>

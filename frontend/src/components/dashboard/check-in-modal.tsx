@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import type React from 'react';
 import type { SetStateAction } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { Button } from '../ui/button';
@@ -51,10 +52,14 @@ function CheckInSummary() {
 export default function CheckInModal({
   isOpen,
   setIsOpen,
+  onSuccess,
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<SetStateAction<boolean>>;
+  onSuccess: () => void;
 }) {
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const form = useForm<CheckInFormValues>({
     resolver: zodResolver(checkInSchema),
     defaultValues: {
@@ -68,22 +73,26 @@ export default function CheckInModal({
 
   function onSubmit(data: CheckInFormValues) {
     console.log('Check-in submitted:', data);
-    form.reset();
-    setIsOpen(false);
+    setIsSuccess(true);
+    onSuccess();
   }
 
-  function handleCancel() {
+  function handleClose() {
     form.reset();
+    setIsSuccess(false);
     setIsOpen(false);
   }
-
-  const isSuccess = true;
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        if (!open) handleClose();
+      }}
+    >
       {isSuccess ? (
         <DialogContent
-          className="px-4 py-6  flex flex-col items-center  gap-6 rounded-2xl overflow-hidden"
+          className="px-4 py-6 flex flex-col items-center gap-6 rounded-2xl overflow-hidden"
           showCloseButton={false}
         >
           <img src="/success.png" alt="success_icon" />
@@ -94,10 +103,9 @@ export default function CheckInModal({
                 March 2026 Completed ✅
               </h5>
               <p className="text-[#404040] font-medium">
-                You’re building a consistent investment habit.
+                You're building a consistent investment habit.
               </p>
             </div>
-
             <div className="text-[#404040] font-medium text-sm">
               <p>Amount recorded: GHS 1,500</p>
               <p>Consistency: 75%</p>
@@ -106,7 +114,7 @@ export default function CheckInModal({
           </div>
 
           <Button
-            onClick={handleCancel}
+            onClick={handleClose}
             className="text-[#667185] bg-transparent hover:bg-transparent"
           >
             Return to dashboard
@@ -138,7 +146,6 @@ export default function CheckInModal({
                 placeholder="0.00"
               />
 
-              {/* File upload — custom since FormField doesn't handle file type */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium text-[#0A0A0A]">
                   Upload image{' '}
@@ -184,7 +191,7 @@ export default function CheckInModal({
                 <Button
                   type="button"
                   variant="ghost"
-                  onClick={handleCancel}
+                  onClick={handleClose}
                   className="text-sm font-medium text-[#0A0A0A] bg-[#F7F7F7] hover:bg-[#F7F7F7]"
                 >
                   Cancel

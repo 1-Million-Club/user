@@ -13,29 +13,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useState } from 'react';
 
 const membershipDetails = [
-  {
-    label: 'Cohort',
-    value: 'Cohort 3',
-  },
-  {
-    label: 'Membership',
-    value: 'Valid until March 2027',
-    badge: 'Active',
-  },
-  {
-    label: 'Investment Plan',
-    value: 'Treasury bill',
-  },
-  {
-    label: 'Frequency',
-    value: 'Monthly',
-  },
+  { label: 'Cohort', value: 'Cohort 3' },
+  { label: 'Membership', value: 'Valid until March 2027', badge: 'Active' },
+  { label: 'Investment Plan', value: 'Treasury bill' },
+  { label: 'Frequency', value: 'Monthly' },
 ];
 
 export default function DashboardHeader() {
-  const hasData = true;
+  const [hasData, setHasData] = useState(false);
 
   return (
     <section className="pb-10">
@@ -66,8 +54,12 @@ export default function DashboardHeader() {
           </div>
         </div>
       </article>
+
       <div className="flex items-stretch gap-6 mt-8">
-        <CheckInCard hasData={hasData} />
+        <CheckInCard
+          hasData={hasData}
+          onCheckInSuccess={() => setHasData(true)}
+        />
         <StatCard
           title="Total Self-Reported Investment"
           value={hasData ? 'GHS  8,500' : '0'}
@@ -90,9 +82,8 @@ export default function DashboardHeader() {
       </div>
 
       <article className="border border-[#F0F0F0] rounded-2xl py-3 mt-8">
-        <div className=" flex items-center justify-between px-5 pb-3 border-b border-[#F0F0F0]">
+        <div className="flex items-center justify-between px-5 pb-3 border-b border-[#F0F0F0]">
           <h5 className="font-semibold text-[#404040]">Accountability group</h5>
-
           <Select>
             <SelectTrigger className="w-32">
               <SelectValue placeholder="Filter" />
@@ -106,7 +97,6 @@ export default function DashboardHeader() {
             </SelectContent>
           </Select>
         </div>
-
         <Accountability hasData={hasData} />
       </article>
 
