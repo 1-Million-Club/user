@@ -26,7 +26,9 @@ export function RecentCheckIns({ hasData }: RecentCheckInsProps) {
       )}
     >
       <div className="flex items-center justify-between mb-4 px-3">
-        <h3 className="font-semibold text-[#404040]">Recent check-ins</h3>
+        <h3 className="font-semibold text-sm text-[#404040]">
+          Recent check-ins
+        </h3>
         {hasData && (
           <Link
             to={'/dashboard/check-ins'}
@@ -61,10 +63,8 @@ export function RecentCheckIns({ hasData }: RecentCheckInsProps) {
 
         {!hasData && (
           <div className="absolute  -bottom-1 top-0 left-0 right-0 rounded-b-2xl flex items-center bg-[#F0F0F0]/80 justify-center">
-            <p className="font-semibold text-[#0A0A0A] text-center">
-              You haven't submitted any
-              <br />
-              check-ins yet.
+            <p className="font-medium text-sm text-[#1A1A1A] text-center">
+              You haven't submitted any <br /> check-ins yet.
             </p>
           </div>
         )}

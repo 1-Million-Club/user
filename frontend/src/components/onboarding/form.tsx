@@ -104,7 +104,7 @@ export default function JoinCohortForm({
               Continue to secure payment
             </Button>
           </div>
-          <p className="text-center text-quarternary">
+          <p className="text-center text-[10px] text-quarternary">
             Secure payment via Mobile Money or Card. <br />
             Powered by Paystack.
           </p>

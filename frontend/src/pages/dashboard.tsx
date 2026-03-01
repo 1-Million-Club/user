@@ -28,15 +28,15 @@ export default function DashboardHeader() {
   return (
     <section className="pb-10">
       <article>
-        <h1 className="font-semibold border-b w-fit pb-4 text-2xl border-[#D4D4D4] border-dashed text-[#001213]">
+        <h1 className="font-semibold border-b w-fit pb-2 text-2xl border-[#D4D4D4] border-dashed text-[#001213]">
           Hey, John 👋
         </h1>
 
-        <div className="mt-4">
+        <div className="mt-2">
           <div className="flex items-center gap-8">
             {membershipDetails.map((item) => (
               <div key={item.label} className="flex flex-col gap-1">
-                <span className="text-quarternary font-semibold">
+                <span className="text-quarternary text-xs font-semibold">
                   {item.label}
                 </span>
                 <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ export default function DashboardHeader() {
         </div>
       </article>
 
-      <div className="flex items-stretch gap-6 mt-8">
+      <div className="flex items-stretch gap-4 mt-8">
         <CheckInCard
           hasData={hasData}
           onCheckInSuccess={() => setHasData(true)}
@@ -76,12 +76,12 @@ export default function DashboardHeader() {
         />
       </div>
 
-      <div className="flex items-stretch gap-6 mt-8">
+      <div className="flex items-stretch gap-4 mt-4">
         <RecentCheckIns hasData={hasData} />
         <ConsistencyScore hasData={hasData} />
       </div>
 
-      <article className="border border-[#F0F0F0] rounded-2xl py-3 mt-8">
+      <article className="border border-[#F0F0F0] rounded-2xl py-3 mt-4">
         <div className="flex items-center justify-between px-5 pb-3 border-b border-[#F0F0F0]">
           <h5 className="font-semibold text-[#404040]">Accountability group</h5>
           <Select>

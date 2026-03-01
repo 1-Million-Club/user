@@ -66,7 +66,7 @@ function CircularProgress({
 export function ConsistencyScore({ hasData }: ConsistencyScoreProps) {
   return (
     <div className="flex-1 rounded-2xl border border-[#e5e5e5] bg-white  py-4">
-      <h3 className="text-base font-semibold border-b border-[#F0F0F0] pb-2 px-5 text-[#404040] mb-4">
+      <h3 className="text-sm font-semibold border-b border-[#F0F0F0] pb-2 px-5 text-[#404040] mb-4">
         Consistency score
       </h3>
 

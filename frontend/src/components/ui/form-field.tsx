@@ -95,7 +95,7 @@ export function FormField<T extends FieldValues>(props: FormFieldProps<T>) {
           )}
 
           {props.hint && !fieldState.invalid && (
-            <p className="text-xs text-quarternary">{props.hint}</p>
+            <p className="text-[10px] text-quarternary">{props.hint}</p>
           )}
 
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

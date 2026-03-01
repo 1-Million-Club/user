@@ -215,12 +215,54 @@ function InvestmentPlanStep() {
   );
 }
 
-// ── Step 2: Knowledge & Shared Standards ─────────────────────────────────────
+function AcknowledgementBlock({
+  checked,
+  onChange,
+  children,
+}: {
+  checked: boolean;
+  onChange: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="border border-[#E5E5E5] rounded-xl p-4 flex flex-col gap-3 text-sm text-[#0E021A]">
+      {children}
+      <label className="flex items-center gap-2.5 cursor-pointer group mt-1">
+        <span
+          className={cn(
+            'size-4 rounded border flex items-center justify-center shrink-0 transition-colors',
+            checked
+              ? 'border-[#297AFF] bg-[#297AFF]'
+              : 'border-[#D4D4D4] bg-white group-hover:border-[#297AFF]',
+          )}
+          onClick={onChange}
+        >
+          {checked && (
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+              <path
+                d="M1 4L3.5 6.5L9 1"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </span>
+        <span className="text-sm font-medium text-[#0E021A]">
+          I understand and agree
+        </span>
+      </label>
+    </div>
+  );
+}
 
 function KnowledgeStep() {
   const [experience, setExperience] = useState('');
   const [instruments, setInstruments] = useState<string[]>([]);
   const [commitment, setCommitment] = useState('');
+  const [integrityAgreed, setIntegrityAgreed] = useState(false);
+  const [conductAgreed, setConductAgreed] = useState(false);
 
   const toggleInstrument = (val: string) => {
     setInstruments((prev) =>
@@ -284,6 +326,59 @@ function KnowledgeStep() {
           />
         ))}
       </QuestionBlock>
+
+      <div className="flex flex-col gap-3">
+        <p className="text-sm font-medium text-[#0E021A]">
+          Before you enter dashboard:
+        </p>
+
+        <AcknowledgementBlock
+          checked={integrityAgreed}
+          onChange={() => setIntegrityAgreed((v) => !v)}
+        >
+          <p className="font-medium">
+            To protect the integrity of this cohort:
+          </p>
+          <ul className="list-disc list-inside flex flex-col gap-1 text-[#404040]">
+            <li>This is not an investment scheme</li>
+            <li>You are responsible for your decisions</li>
+            <li>Members respect confidentiality</li>
+          </ul>
+        </AcknowledgementBlock>
+
+        <div
+          className={cn(
+            'border rounded-xl p-4 flex items-center gap-2.5 cursor-pointer group transition-colors',
+            conductAgreed ? 'border-[#297AFF]' : 'border-[#E5E5E5]',
+          )}
+          onClick={() => setConductAgreed((v) => !v)}
+        >
+          <span
+            className={cn(
+              'size-4 rounded border flex items-center justify-center shrink-0 transition-colors',
+              conductAgreed
+                ? 'border-[#297AFF] bg-[#297AFF]'
+                : 'border-[#D4D4D4] bg-white group-hover:border-[#297AFF]',
+            )}
+          >
+            {conductAgreed && (
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path
+                  d="M1 4L3.5 6.5L9 1"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+          </span>
+          <p className="text-sm font-medium text-[#0E021A]">
+            I commit to maintaining the confidentiality and adhering to the
+            Club's Code of Conduct
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -373,7 +468,7 @@ export default function Quiz() {
   };
 
   return (
-    <div className="min-h-screen  max-w-227.5 mx-auto space-y-8 bg-white px-8 pb-16">
+    <div className="min-h-screen  max-w-227.5 mx-auto space-y-8 bg-white pb-16">
       <h1 className="text-2xl font-bold text-[#0E021A]">
         Welcome, John. Let's get you set up.
       </h1>
@@ -410,7 +505,9 @@ export default function Quiz() {
           )}
 
           <Button className="w-full mt-2" onClick={handleContinue}>
-            {currentStep === 'knowledge-standards' ? 'Finish' : 'Continue'}
+            {currentStep === 'knowledge-standards'
+              ? 'Enter dashboard'
+              : 'Continue'}
           </Button>
         </div>
       </div>

@@ -59,7 +59,7 @@ function AccountSetupForm({ email }: AccountSetupFormProps) {
             className="bg-[#F7F7F7] border text-sm border-[#F0F0F0] text-[#A3A3A3] pointer-events-none"
           />
 
-          <p className="text-quarternary mt-1 text-xs">
+          <p className="text-quarternary mt-1 text-[10px]">
             This account was created after your successful payment.
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function AccountSetup() {
         <AccountSetupForm email="KwameCohort@mail.com" />
       </article>
 
-      <p className="text-center text-sm text-quarternary">
+      <p className="text-center text-sm text-quarternary max-w-87.5">
         By continuing, you agree to our{' '}
         <a href="/terms" className="underline text-[#0E021A]">
           Terms of Use
