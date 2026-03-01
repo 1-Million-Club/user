@@ -1,4 +1,5 @@
 import { ChevronDown, LogOut, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import {
   DropdownMenu,
@@ -9,6 +10,8 @@ import {
 } from '../ui/dropdown-menu';
 
 export default function SettingsDropdown() {
+  const navigate = useNavigate();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-1 outline-none">
@@ -49,7 +52,10 @@ export default function SettingsDropdown() {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className="flex items-center gap-3 rounded-lg px-3 py-2.5 cursor-pointer">
+        <DropdownMenuItem
+          onClick={() => navigate('/settings')}
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 cursor-pointer"
+        >
           <Settings size={16} className="text-quarternary" />
           <span className="text-sm font-medium text-dark-black">Settings</span>
         </DropdownMenuItem>

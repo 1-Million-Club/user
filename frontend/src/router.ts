@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard';
 import Home from './pages/home';
 import Login from './pages/login';
 import Quiz from './pages/quiz';
+import Settings from './pages/settings';
 
 export const router = createBrowserRouter([
   { path: '/', Component: Home },
@@ -20,4 +21,5 @@ export const router = createBrowserRouter([
       { path: 'quiz', Component: Quiz },
     ],
   },
+  { path: '/settings', Component: Settings },
 ]);
